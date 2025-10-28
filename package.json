@@ -1,0 +1,73 @@
+{
+  "name": "@ffilip/mui-react-utils",
+  "version": "1.0.0",
+  "description": "React components and hooks. MUI utilities.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    },
+    "./document": {
+      "import": "./dist/document/index.js",
+      "types": "./dist/document/index.d.ts"
+    },
+    "./mui": {
+      "import": "./dist/mui/index.js",
+      "types": "./dist/mui/index.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react/index.js",
+      "types": "./dist/react/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./styles": {
+      "import": "./dist/styles.css"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc && sass src/styles/main.scss dist/styles.css --no-source-map",
+    "version:major": "npm version --major && git push --follow-tags",
+    "version:minor": "npm version --minor && git push --follow-tags",
+    "version:patch": "npm version --patch && git push --follow-tags",
+    "manualRelease": "npm run build && npm publish --access public && npm info @ffilip/mui-react-utils"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "typescript",
+    "helpers",
+    "utils",
+    "mui",
+    "react",
+    "hooks"
+  ],
+  "author": "Phillip K.",
+  "license": "MIT",
+  "homepage": "https://chan180.net",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/milenbubi/mui-react-utils.git"
+  },
+  "devDependencies": {
+    "@mui/material": "^7.3.2",
+    "@types/react": "^18.3.3",
+    "sass": "^1.93.2",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
