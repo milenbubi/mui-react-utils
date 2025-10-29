@@ -1,6 +1,6 @@
 {
   "name": "@ffilip/mui-react-utils",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "React components and hooks. MUI utilities.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,15 +25,12 @@
       "import": "./dist/react/index.js",
       "types": "./dist/react/index.d.ts"
     },
-    "./hooks": {
-      "import": "./dist/hooks/index.js",
-      "types": "./dist/hooks/index.d.ts"
-    },
-    "./styles": {
+    "./styles.css": {
       "import": "./dist/styles.css"
     }
   },
   "scripts": {
+    "dev": "tsc -w",
     "build": "rm -rf dist && tsc && sass src/styles/main.scss dist/styles.css --no-source-map",
     "version:major": "npm version --major && git push --follow-tags",
     "version:minor": "npm version --minor && git push --follow-tags",
@@ -59,13 +56,17 @@
     "url": "https://github.com/milenbubi/mui-react-utils.git"
   },
   "devDependencies": {
-    "@mui/material": "^7.3.2",
+    "@mui/material": "^5.15.21",
     "@types/react": "^18.3.3",
     "sass": "^1.93.2",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "react": ">=18.0.0"
+    "react": ">=18.0.0",
+    "@mui/material": ">=5.0.0"
+  },
+  "dependencies": {
+    "@iconify/react": "^6.0.2"
   },
   "publishConfig": {
     "access": "public"

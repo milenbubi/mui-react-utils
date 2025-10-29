@@ -5,6 +5,16 @@
 
 React components and hooks. MUI utilities.
 
+## Requirements
+
+This library requires **React 18 or newer** and **MUI v5 or newer** to be installed in your project.
+
+If you don’t have them already:
+
+```bash
+npm install react @mui/material
+```
+
 ## Installation
 
 with npm:
@@ -39,9 +49,17 @@ import "@ffilip/mui-react-utils/styles.css";
 
 🧩 **Composable utilities** — ready-to-use React hooks and helpers built around MUI and modern React patterns.
 
-⚙️ **MUI integration** — utilities designed to extend or simplify Material UI usage (e.g., theme mode detection, layout helpers).
+🧱 **MUI integration** — utilities designed to extend or simplify Material UI usage (e.g., theme mode detection, layout helpers).
+
+⚙️ **Browser helper** — lightweight React hook for tracking page visibility that works seamlessly across environments.
 
 🧠 **Fully typed with TypeScript** — all exports include built-in type definitions; no `@types` packages required.
+
+## 🎨 Available style modules
+
+| Import path                          | Description              |
+| ------------------------------------ | ------------------------ |
+| `@ffilip/mui-react-utils/global.css` | All-in-one global styles |
 
 ## License
 

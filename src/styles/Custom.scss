@@ -1,0 +1,34 @@
+.unselectable {
+  /* Safari */
+  -webkit-user-select: none;
+  /* Firefox */
+  -moz-user-select: none;
+  /* IE10+/Edge */
+  -ms-user-select: none;
+  /* Standard */
+  user-select: none;
+}
+
+.d-none {
+  display: none;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.bullet-style {
+  &:before {
+    content: "\2022";
+    margin-right: 8px;
+    font-weight: bold;
+  }
+}
