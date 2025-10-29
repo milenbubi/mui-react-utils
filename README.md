@@ -27,7 +27,7 @@ import { Centered } from "@ffilip/mui-react-utils/components";
 import { useIsThemeDark } from "@ffilip/mui-react-utils/mui";
 ```
 
-### Optional global styles
+## Optional global styles
 
 To include the default styles, import them manually in your app entry:
 
@@ -39,18 +39,9 @@ import "@ffilip/mui-react-utils/styles.css";
 
 🧩 **Composable utilities** — ready-to-use React hooks and helpers built around MUI and modern React patterns.
 
-🎨 **MUI integration** — utilities designed to extend or simplify Material UI usage (e.g., theme mode detection, layout helpers).
-
-⚙️ **Browser helpers** — simple wrapper for visibility and DOM utilities that work seamlessly in any environment.
+⚙️ **MUI integration** — utilities designed to extend or simplify Material UI usage (e.g., theme mode detection, layout helpers).
 
 🧠 **Fully typed with TypeScript** — all exports include built-in type definitions; no `@types` packages required.
-
-🧱 **Modular imports** — import only what you need to keep your bundle light:
-
-```ts
-import { useIsThemeDark } from "@ffilip/mui-react-utils/mui";
-import { Centered } from "@ffilip/mui-react-utils/components";
-```
 
 ## License
 
