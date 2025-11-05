@@ -1,6 +1,6 @@
 {
   "name": "@ffilip/mui-react-utils",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "description": "React components and hooks. MUI utilities.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
