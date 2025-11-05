@@ -2,15 +2,10 @@ import { useMemo } from "react";
 import { colors } from "@mui/material";
 import { useIsThemeDark } from "./mui";
 
-interface IChan180Colors {
-  greenC: string;
-  redC: string;
-  yellowC: string;
-  isDark: boolean;
-  blueC: string;
-  labelC: string;
-  borderC: string;
-}
+type IChan180Colors = Record<
+  "greenC" | "redC" | "yellowC" | "blueC" | "labelC" | "borderC" | "bgrC",
+  string
+> & { isDark: boolean };
 
 
 
@@ -29,6 +24,7 @@ interface IChan180Colors {
  * - `isDark`: boolean indicating whether the current theme is dark
  * - `labelC`: custom text/label color tuned per mode
  * - `borderC`: neutral grey border color
+ * - `bgrC`: background color tuned for the current theme (darker in dark mode)
  *
  * @example
  * ```tsx
@@ -56,7 +52,9 @@ export function useChan180Colors(): IChan180Colors {
       blueC: colors.blue[isThemeDark ? 400 : 900],
       isDark: isThemeDark,
       labelC: isThemeDark ? "#f3fb97" : "#335a53",
-      borderC: isThemeDark ? colors.grey[500] : colors.grey[500]
+      borderC: isThemeDark ? colors.grey[500] : colors.grey[500],
+      bgrC: isThemeDark ? "#0b0d0e" : "#fbfcfe",
+
     }), [isThemeDark]
   );
 
