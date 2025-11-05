@@ -88,9 +88,9 @@ const DeleteButton = () => (
  * @returns {JSX.Element} The search field component with built-in form handling.
  */
 function SearchField({ onChange, onSubmit, name, placeholder = "Search ...", maxWidth = 250 }: IProps): JSX.Element {
+  const { bgrC } = useChan180Colors();
   const [search, setSearch] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const { bgrC } = useChan180Colors();
 
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -134,7 +134,7 @@ function SearchField({ onChange, onSubmit, name, placeholder = "Search ...", max
                 maxWidth,
                 borderRadius: "6px",
                 px: "44px",
-                // background:bgrC
+                background: bgrC
               }
             }}
           />
