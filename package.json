@@ -1,6 +1,6 @@
 {
   "name": "@ffilip/mui-react-utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React components and hooks. MUI utilities.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,7 +35,7 @@
     "version:major": "npm version --major && git push --follow-tags",
     "version:minor": "npm version --minor && git push --follow-tags",
     "version:patch": "npm version --patch && git push --follow-tags",
-    "manualRelease": "npm run build && npm publish --access public && npm info @ffilip/mui-react-utils"
+    "manualRelease": "rm -rf dist && npm run build && npm publish --access public && npm info @ffilip/mui-react-utils"
   },
   "files": [
     "dist"
