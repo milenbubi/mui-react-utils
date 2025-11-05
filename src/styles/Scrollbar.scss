@@ -27,7 +27,7 @@
 
   &::-webkit-scrollbar-thumb:hover {
     /* color of the scroll thumb when hovered */
-    background: var(--Scrollbar-color-on-hover, #6f8fb4);
+    background: var(--Scrollbar-color-on-hover, #5a6b8a);
   }
 
   &::-webkit-scrollbar-track {
@@ -37,7 +37,7 @@
 
   &::-webkit-scrollbar-thumb {
     /* color of the scroll thumb */
-    background: var(--Scrollbar-color, #5a6b8a);
+    background: var(--Scrollbar-color, #6e87a8);
     /* roundness of the scroll thumb */
     border-radius: 4px;
     /* creates padding around scroll thumb */
