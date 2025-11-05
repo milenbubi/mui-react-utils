@@ -53,7 +53,7 @@
   "homepage": "https://chan180.net",
   "repository": {
     "type": "git",
-    "url": "https://github.com/milenbubi/mui-react-utils.git"
+    "url": "git+https://github.com/milenbubi/mui-react-utils.git"
   },
   "devDependencies": {
     "@emotion/react": "^11.11.4",
