@@ -1,4 +1,3 @@
-import { C180ZIndex } from "@ffilip/mui-react-utils";
 import { Backdrop, CircularProgress } from "@mui/material";
 
 interface IProps {
@@ -32,7 +31,7 @@ function C180Modal({ open }: IProps) {
     <Backdrop
       sx={{
         color: "#fff",
-        zIndex: C180ZIndex.backdrop,
+        zIndex: 1,
         position: "absolute"
       }}
       open={!!open}
