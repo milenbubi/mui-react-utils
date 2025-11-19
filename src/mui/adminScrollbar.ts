@@ -2,21 +2,39 @@ import { useIsMUIMobile } from "./mui";
 
 
 /**
- * React hook that returns a CSS class name for enabling the custom admin scrollbar.
- * On mobile devices (below `'md'` breakpoint), no class is returned.
+ * React hook that determines whether the custom admin scrollbar should be enabled.
  *
- * @returns {string}
- * `"adminscrollbar"` when on desktop, or an empty string on mobile.
+ * It returns an object with two properties:
+ *
+ * - `className`: the class name that should be applied to enable the custom scrollbar.  
+ *   It is `"adminscrollbar"` on desktop (≥ `md` breakpoint) and an empty string on mobile.
+ *
+ * - `baseClassName`: the fixed name of the CSS class used for the admin scrollbar.  
+ *   Always `"adminscrollbar"`, regardless of the screen size.
+ *
+ * This allows consumers of the hook to add or remove the class dynamically
+ * without hardcoding the name.
+ *
+ * @returns {{ className: string, baseClassName: string }}
  *
  * @example
  * ```tsx
- * const scrollbarClass = useAdminScrollbar();
- * return <div className={scrollbarClass}>Content</div>;
+ * const { className, baseClassName } = useAdminScrollbar();
+ *
+ * useEffect(() => {
+ *   document.body.classList.remove(baseClassName);
+ *   if (className) {
+ *     document.body.classList.add(className);
+ *   }
+ * }, [className, baseClassName]);
  * ```
  */
-export function useAdminScrollbar(): string {
+export function useAdminScrollbar(): { className: string; baseClassName: string; } {
   const isMobile = useIsMUIMobile();
-  const className = isMobile ? "" : "adminscrollbar";
+  const baseClassName = "adminscrollbar";
 
-  return className;
+  return {
+    className: isMobile ? "" : baseClassName,
+    baseClassName
+  };
 }
