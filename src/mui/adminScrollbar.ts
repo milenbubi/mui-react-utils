@@ -6,7 +6,7 @@ import { useIsMUIMobile } from "./mui";
  *
  * It returns an object with two properties:
  *
- * - `admScrlBarClass`: the class name that should be applied to enable the custom scrollbar.  
+ * - `admScrlBarClassName`: the class name that should be applied to enable the custom scrollbar.  
  *   It is `"adminscrollbar"` on desktop (≥ `md` breakpoint) and an empty string on mobile.
  *
  * - `baseClassName`: the fixed name of the CSS class used for the admin scrollbar.  
@@ -15,26 +15,26 @@ import { useIsMUIMobile } from "./mui";
  * This allows consumers of the hook to add or remove the class dynamically
  * without hardcoding the name.
  *
- * @returns {{ admScrlBarClass: string, baseClassName: string }}
+ * @returns {{ admScrlBarClassName: string, baseClassName: string }}
  *
  * @example
  * ```tsx
- * const { admScrlBarClass, baseClassName } = useAdminScrollbar();
+ * const { admScrlBarClassName, baseClassName } = useAdminScrollbar();
  *
  * useEffect(() => {
  *   document.body.classList.remove(baseClassName);
- *   if (admScrlBarClass) {
- *     document.body.classList.add(admScrlBarClass);
+ *   if (admScrlBarClassName) {
+ *     document.body.classList.add(admScrlBarClassName);
  *   }
- * }, [admScrlBarClass, baseClassName]);
+ * }, [admScrlBarClassName, baseClassName]);
  * ```
  */
-export function useAdminScrollbar(): { admScrlBarClass: string; baseClassName: string; } {
+export function useAdminScrollbar(): { admScrlBarClassName: string; baseClassName: string; } {
   const isMobile = useIsMUIMobile();
   const baseClassName = "adminscrollbar";
 
   return {
-    admScrlBarClass: isMobile ? "" : baseClassName,
+    admScrlBarClassName: isMobile ? "" : baseClassName,
     baseClassName
   };
 }
