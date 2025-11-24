@@ -3,3 +3,4 @@ export * from "./chan180Colors";
 export * from "./adminScrollbar";
 export * from "./utils";
 export * from "./css";
+export * from "./fixMuiOverlayFocus";
