@@ -58,9 +58,16 @@ function ClipboardCopyButton({ defaultTitle, textToCopy, size = 18, sx }: IProps
   const [tooltip, setTooltip] = useState(defaultTitle);
   const isHTTPS = useMemo(() => window.isSecureContext, []);
 
+
   const tooltipProps = useMemo<Partial<TooltipProps>>(() => {
     if (!isDeviceMobile) {
-      return { onMouseLeave: () => setTooltip(defaultTitle) };
+      return {
+        onMouseLeave: () => {
+          setTimeout(() => {
+            setTooltip(defaultTitle);
+          }, 300);
+        }
+      }
     }
 
     return {
@@ -81,10 +88,15 @@ function ClipboardCopyButton({ defaultTitle, textToCopy, size = 18, sx }: IProps
           isDeviceMobile && setOpen(true);
 
           // Automatically hide if current device is mobile
-          isDeviceMobile && setTimeout(() => {
-            setTooltip(defaultTitle);
-            setOpen(false);
-          }, 1500);
+          if (isDeviceMobile) {
+            setTimeout(() => {
+              setTooltip(defaultTitle);
+            }, 1800);
+
+            setTimeout(() => {
+              setOpen(false);
+            }, 1500);
+          }
         })
         .catch(() => { });
     }
