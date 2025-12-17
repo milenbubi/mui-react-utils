@@ -1,56 +1,53 @@
 import { useMemo, useState } from "react";
 import { isMobile } from "@ffilip/chan180-utils/env";
-import { IconButton, SxProps, Theme, Box, Tooltip, TooltipProps } from "@mui/material";
+import { C180ZIndex, Iconify, useChan180Colors } from "@ffilip/mui-react-utils";
+import { IconButton, SxProps, Theme, Box, Tooltip, TooltipProps, Typography } from "@mui/material";
 
-import { Iconify } from "./Iconify";
-import { C180ZIndex, useChan180Colors } from "../mui";
 
 interface IProps {
   defaultTitle: string;
   textToCopy: string;
-  size?: number;
-  sx?: SxProps<Theme>;
+  iconSize?: number;
+  butonSx?: SxProps<Theme>;
+  label?: string;
+  labelPosition?: "left" | "right";
 };
 
 
-
 /**
- * Copy-to-clipboard button component for Chan180 projects.
+ * A button that copies text to the clipboard with a tooltip feedback.
  *
- * Displays an icon button with a tooltip that copies a given text to the clipboard
- * when clicked. The tooltip automatically updates to "Copied" on success and
- * resets to the default title afterward. Works differently on mobile devices to
- * ensure proper user feedback.
+ * Displays an icon button (optionally with a label) that copies the given `textToCopy`
+ * to the clipboard when clicked. The tooltip shows `defaultTitle` by default and
+ * temporarily updates to "Copied" after a successful copy.
  *
- * - Uses `navigator.clipboard.writeText` (only available in HTTPS contexts).
- * - Adapts tooltip behavior for desktop and mobile via `@ffilip/chan180-utils/env.isMobile`.
- * - Integrates with the Chan180 color system through `useChan180Colors()`.
+ * Handles mobile devices differently to ensure proper tooltip behavior.
+ * Does not render if the page is not served over HTTPS.
  *
  * @component
+ *
+ * @param {object} props
+ * @param {string} props.defaultTitle - Default tooltip text (e.g., "Copy").
+ * @param {string} props.textToCopy - The text string to be copied to the clipboard.
+ * @param {number} [props.iconSize=18] - The size of the copy icon in pixels. Default - 18.
+ * @param {SxProps<Theme>} [props.butonSx] - Optional additional styling for the button.
+ * @param {string} [props.label] - Optional text label displayed next to the icon.
+ * @param {"left"|"right"} [props.labelPosition="right"] - Position of the label relative to the icon. Default - "right".
+ *
+ * @returns {JSX.Element | null} The copy button component, or `null` if HTTPS is unavailable.
+ *
  * @example
  * ```tsx
- * import { ClipboardCopyButton } from "@ffilip/mui-react-utils";
- *
- * export default function Example() {
- *   return (
- *     <ClipboardCopyButton
- *       defaultTitle="Copy link"
- *       textToCopy="https://chan180.net"
- *       size={20}
- *     />
- *   );
- * }
+ * <ClipboardCopyButton
+ *   defaultTitle="Copy link"
+ *   textToCopy="https://chan180.net"
+ *   iconSize={20}
+ *   label="Copy"
+ *   labelPosition="left"
+ * />
  * ```
- *
- * @param {object} props - Component props.
- * @param {string} props.defaultTitle - Default tooltip text (e.g., "Copy").
- * @param {string} props.textToCopy - Text value to be copied to the clipboard.
- * @param {number} [props.size=18] - Icon size in pixels.
- * @param {SxProps<Theme>} [props.sx] - Optional custom styling for the `IconButton`.
- *
- * @returns {JSX.Element | null} The copy button component, or `null` if HTTPS is not available.
  */
-function ClipboardCopyButton({ defaultTitle, textToCopy, size = 18, sx }: IProps): JSX.Element | null {
+function ClipboardCopyButton({ defaultTitle, textToCopy, iconSize = 18, butonSx, label, labelPosition = "right" }: IProps): JSX.Element | null {
   const { blueC } = useChan180Colors();
   const [open, setOpen] = useState(false);
   const isDeviceMobile = useMemo(() => isMobile(), []);
@@ -65,7 +62,7 @@ function ClipboardCopyButton({ defaultTitle, textToCopy, size = 18, sx }: IProps
         onMouseLeave: () => {
           setTimeout(() => {
             setTooltip(defaultTitle);
-          }, 300);
+          }, 200);
         }
       }
     }
@@ -91,7 +88,7 @@ function ClipboardCopyButton({ defaultTitle, textToCopy, size = 18, sx }: IProps
           if (isDeviceMobile) {
             setTimeout(() => {
               setTooltip(defaultTitle);
-            }, 1800);
+            }, 1700);
 
             setTimeout(() => {
               setOpen(false);
@@ -123,8 +120,18 @@ function ClipboardCopyButton({ defaultTitle, textToCopy, size = 18, sx }: IProps
       title={<Box>{tooltip}</Box>}
       {...tooltipProps}
     >
-      <IconButton onClick={handleCopy} sx={sx}>
-        <Iconify icon="uiw:copy" width={size} sx={{ color: blueC }} />
+      <IconButton onClick={handleCopy} sx={{ color: blueC, borderRadius: 999, ...butonSx }}>
+        {(label && labelPosition === "left") && (
+          <Typography sx={{ fontSize: iconSize / 1.5, fontWeight: 600, fontStyle: "italic", color: "text.secondary", mr: 1 }}>
+            {"Copy"}
+          </Typography>
+        )}
+        <Iconify icon="uiw:copy" width={iconSize} />
+        {(label && labelPosition === "right") && (
+          <Typography sx={{ fontSize: iconSize / 1.5, fontWeight: 600, fontStyle: "italic", color: "text.secondary", ml: 1 }}>
+            {"Copy"}
+          </Typography>
+        )}
       </IconButton>
     </Tooltip>
   );
