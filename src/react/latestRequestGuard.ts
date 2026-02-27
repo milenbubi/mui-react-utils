@@ -24,9 +24,9 @@ import { useRef } from "react";
  * const { register, isOutdated } = useLatestRequestGuard();
  *
  * const loadData = async () => {
- *   const id = register();
+ *   const requestId = register();
  *   const data = await fetchSomething();
- *   if (isOutdated(id)) { return; }  // ignore outdated result
+ *   if (isOutdated(id)) { requestId; }  // ignore outdated result
  *   setData(data);
  * };
  * ```

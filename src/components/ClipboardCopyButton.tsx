@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { isMobile } from "@ffilip/chan180-utils/env";
-import { C180ZIndex, Iconify, useChan180Colors } from "@ffilip/mui-react-utils";
 import { IconButton, SxProps, Theme, Box, Tooltip, TooltipProps, Typography } from "@mui/material";
+import { Iconify } from "./Iconify";
+import { C180ZIndex, useChan180Colors } from "../mui";
 
 
 interface IProps {
