@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 
 
 
-let visibilityState = document.visibilityState;  // Globally cached
+//let visibilityState = document.visibilityState;  // Globally cached
 const listeners = new Set<(visible: boolean) => void>();
 
 function onVisibilityChange() {
-  visibilityState = document.visibilityState;
-  const isVisible = visibilityState === "visible";
+  const isVisible = document.visibilityState === "visible";
   listeners.forEach(listener => listener(isVisible));
 }
 
@@ -41,7 +40,7 @@ export function useDocumentVisibility(): boolean {
     }
 
     // Synchronize the current state
-    setIsVisible(visibilityState === "visible");
+    setIsVisible(document.visibilityState === "visible");
 
     return () => {
       listeners.delete(listener);
